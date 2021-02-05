@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from core import models
 
 
 class UserAdmin(BaseUserAdmin):
@@ -8,12 +9,12 @@ class UserAdmin(BaseUserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser')}),
-        ('important dates'), {'fileds': ('last_login',)}
+        ('important dates', {'fields': ('last_login',)})
     )
     add_fieldsets = (
         (None, {
-            'classes': ('wide',)
-            'fields'L('email', 'password1', 'password2')
+            'classes': ('wide',),
+            'fields': ('email', 'password1', 'password2')
         }),
     )
 
