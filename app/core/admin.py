@@ -9,12 +9,13 @@ class UserAdmin(BaseUserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser')}),
+        ('Personal info', {'fields': ('instagram_account',)}),
         ('important dates', {'fields': ('last_login',)})
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2')
+            'fields': ('email', 'password1', 'password2', 'instagram_account')
         }),
     )
 
