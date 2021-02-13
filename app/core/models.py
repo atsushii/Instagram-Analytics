@@ -36,3 +36,28 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
     USERNAME_FIELD = 'email'
+
+
+class InstagramAccount(models.Model):
+    """Instagram account that collects daily information"""
+    pass
+
+
+class InstagramMedia(modela.Model):
+    """Store other user reaction for posted media"""
+    pass
+
+
+class InstagramComment(model.Model):
+    """Store other user comments for posted media"""
+    pass
+
+
+class InstagramMediaTag(model.Model):
+    """Store posted media tags"""
+    pass
+
+
+class InstagramMediaLocation(model.Model):
+    """Store posted media location"""
+    pass
