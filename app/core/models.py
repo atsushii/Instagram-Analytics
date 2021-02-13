@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager,\
     PermissionsMixin
 from django.utils import timezone
+from django.conf import settings
 
 
 class UserManager(BaseUserManager):
@@ -40,24 +41,47 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class InstagramAccount(models.Model):
     """Instagram account that collects daily information"""
-    pass
+    counts_followed_by = models.IntegerField(default=0)
+    profile_picture_url = models.URLField(max_length=200)
+    counts_media = models.IntegerField(default=0)
+    counts_follow = models.IntegerField(default=0)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
 
 
 class InstagramMedia(modela.Model):
     """Store reactions for posted media"""
-    pass
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    created_time = models.TimeField()
+    link_to_media = models.URLField(max_length=200)
+    comments_count = models.IntegerField(default=0)
+    media_type = models.CharField(max_length=255)
+    links_count = models.IntegerField(default=0)
+    tags = models.ManyToManyField('InstagramMediaTag')
+    locations = models.ManyToManyField('InstagramMediaLocation')
 
 
 class InstagramComment(model.Model):
     """Store users comments for posted media"""
-    pass
+    from_username = models.CharField(max_length=255)
+    comment = models.TextField()
+    created_time = models.TimeField()
+    media = models.ForeignKey(
+        InstagramMedia,
+        on_delete=models.CASCADE
+    )
 
 
 class InstagramMediaTag(model.Model):
     """Store posted media tags"""
-    pass
+    tag = models.CharField(max_length=255)
 
 
 class InstagramMediaLocation(model.Model):
     """Store posted media location"""
-    pass
+    location = models.CharField(max_length=255)
