@@ -50,6 +50,9 @@ class InstagramAccount(models.Model):
         on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return self.user
+
 
 class InstagramMedia(models.Model):
     """Store reactions for posted media"""
@@ -65,6 +68,9 @@ class InstagramMedia(models.Model):
     tags = models.ManyToManyField('InstagramMediaTag')
     locations = models.ManyToManyField('InstagramMediaLocation')
 
+    def __str__(self):
+        return self.user
+
 
 class InstagramComment(models.Model):
     """Store users comments for posted media"""
@@ -76,12 +82,21 @@ class InstagramComment(models.Model):
         on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return self.media
+
 
 class InstagramMediaTag(models.Model):
     """Store posted media tags"""
     tag = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.tag
+
 
 class InstagramMediaLocation(models.Model):
     """Store posted media location"""
     location = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.location
