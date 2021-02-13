@@ -44,12 +44,12 @@ class InstagramAccount(models.Model):
 
 
 class InstagramMedia(modela.Model):
-    """Store other user reaction for posted media"""
+    """Store reactions for posted media"""
     pass
 
 
 class InstagramComment(model.Model):
-    """Store other user comments for posted media"""
+    """Store users comments for posted media"""
     pass
 
 
