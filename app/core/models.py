@@ -51,7 +51,7 @@ class InstagramAccount(models.Model):
     )
 
 
-class InstagramMedia(modela.Model):
+class InstagramMedia(models.Model):
     """Store reactions for posted media"""
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -66,7 +66,7 @@ class InstagramMedia(modela.Model):
     locations = models.ManyToManyField('InstagramMediaLocation')
 
 
-class InstagramComment(model.Model):
+class InstagramComment(models.Model):
     """Store users comments for posted media"""
     from_username = models.CharField(max_length=255)
     comment = models.TextField()
@@ -77,11 +77,11 @@ class InstagramComment(model.Model):
     )
 
 
-class InstagramMediaTag(model.Model):
+class InstagramMediaTag(models.Model):
     """Store posted media tags"""
     tag = models.CharField(max_length=255)
 
 
-class InstagramMediaLocation(model.Model):
+class InstagramMediaLocation(models.Model):
     """Store posted media location"""
     location = models.CharField(max_length=255)
