@@ -1,5 +1,9 @@
 from rest_framework import serializers
-from core.models import InstagramAccount, InstagramComment
+from core.models import InstagramAccount, \
+    InstagramComment, \
+    InstagramMedia, \
+    InstagramMediaTag, \
+    InstagramMediaLocation
 
 
 class InstagramAccountSerializer(serializers.ModelSerializer):
